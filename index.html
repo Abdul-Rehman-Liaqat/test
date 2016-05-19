@@ -1,621 +1,503 @@
 ﻿<!DOCTYPE html>
-<html>
-  <head>
-    <title>index</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Untitled Document</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
-    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
-    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="files/index/styles.css" type="text/css" rel="stylesheet"/>
-    <script src="resources/scripts/jquery-1.7.1.min.js"></script>
-    <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
-    <script src="resources/scripts/axure/axQuery.js"></script>
-    <script src="resources/scripts/axure/globals.js"></script>
-    <script src="resources/scripts/axutils.js"></script>
-    <script src="resources/scripts/axure/annotation.js"></script>
-    <script src="resources/scripts/axure/axQuery.std.js"></script>
-    <script src="resources/scripts/axure/doc.js"></script>
-    <script src="data/document.js"></script>
-    <script src="resources/scripts/messagecenter.js"></script>
-    <script src="resources/scripts/axure/events.js"></script>
-    <script src="resources/scripts/axure/recording.js"></script>
-    <script src="resources/scripts/axure/action.js"></script>
-    <script src="resources/scripts/axure/expr.js"></script>
-    <script src="resources/scripts/axure/geometry.js"></script>
-    <script src="resources/scripts/axure/flyout.js"></script>
-    <script src="resources/scripts/axure/ie.js"></script>
-    <script src="resources/scripts/axure/model.js"></script>
-    <script src="resources/scripts/axure/repeater.js"></script>
-    <script src="resources/scripts/axure/sto.js"></script>
-    <script src="resources/scripts/axure/utils.temp.js"></script>
-    <script src="resources/scripts/axure/variables.js"></script>
-    <script src="resources/scripts/axure/drag.js"></script>
-    <script src="resources/scripts/axure/move.js"></script>
-    <script src="resources/scripts/axure/visibility.js"></script>
-    <script src="resources/scripts/axure/style.js"></script>
-    <script src="resources/scripts/axure/adaptive.js"></script>
-    <script src="resources/scripts/axure/tree.js"></script>
-    <script src="resources/scripts/axure/init.temp.js"></script>
-    <script src="files/index/data.js"></script>
-    <script src="resources/scripts/axure/legacy.js"></script>
-    <script src="resources/scripts/axure/viewer.js"></script>
-    <script src="resources/scripts/axure/math.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link type="text/css" href="resources/css/reset.css" rel="Stylesheet" />
+    <link type="text/css" href="resources/css/default.css" rel="Stylesheet" />
+    <!--<link href='https://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>-->
+
     <script type="text/javascript">
-      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
-      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
-      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+        if (location.href.toString().indexOf('file://localhost/') == 0) {
+            location.href = location.href.toString().replace('file://localhost/', 'file:///');
+        }
     </script>
-  </head>
-  <body>
-    <div id="base" class="">
 
-      <!-- Unnamed (BackArea) -->
+    <script type="text/javascript" src="resources/scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="resources/scripts/player/splitter.js"></script>
+    <script type="text/javascript" src="resources/scripts/axutils.js"></script>
+    <script type="text/javascript" src="resources/scripts/player/axplayer.js"></script>
+    <script type="text/javascript" src="resources/scripts/messagecenter.js"></script>
+    <script type="text/javascript" src="data/document.js"></script>
+    <style type="text/css">
 
-      <!-- Unnamed (Inline Frame) -->
-      <div id="u1869" class="ax_default">
-        <iframe id="u1869_input" scrolling="no" frameborder="0"></iframe>
-      </div>
+#outerContainer {
+	width:1000px;
+	height:1500px;
+}
 
-      <!-- One (Rectangle) -->
-      <div id="u1870" class="ax_default box_1" data-label="One" selectiongroup="u1868MovingSlide">
-        <div id="u1870_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1871" class="text" style="display: none; visibility: hidden">
-          <p><span></span></p>
+.vsplitbar {
+    width: 3px;
+    /*background: #B9B9B9;*/
+    border-right: 1px solid #8f949a;
+}
+
+.vsplitbar:hover, .vsplitbar.active {
+    background: #8f949a;
+}
+
+#rightPanel {
+    background-color: White;
+}
+
+/*#leftPanel {
+    min-width: 120px;
+}*/
+
+.splitterMask {
+   position:absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   background-image: url(resources/images/transparent.gif);
+   z-index: 20000;
+}
+
+    </style>
+    <script type="text/javascript" language="JavaScript"><!--
+        var SITEMAP_COLLAPSE_VAR_NAME = 'c';
+        var PLUGIN_VAR_NAME = 'g';
+        var FOOTNOTES_VAR_NAME = 'fn';
+        var ADAPTIVE_VIEW_VAR_NAME = 'view';
+        var lastLeftPanelWidth = 295;
+        var toolBarOnly = true;
+
+        // isolate scope
+        (function() {
+            setUpController();
+            
+            var configuration = $axure.document.configuration;
+            var _settings = {};
+            _settings.projectId = configuration.prototypeId;
+            _settings.isAxshare = configuration.isAxshare;
+            _settings.loadFeedbackPlugin = configuration.loadFeedbackPlugin;
+            var cHash = getHashStringVar(SITEMAP_COLLAPSE_VAR_NAME);
+            _settings.startCollapsed = cHash == "1";
+            if(cHash == "2") closePlayer();
+            var gHash = getHashStringVar(PLUGIN_VAR_NAME);
+            if(gHash == "") gHash = 1;
+            _settings.startPluginGid = gHash;
+
+            $axure.player.settings = _settings;
+
+            $(window).bind('load', function() {
+                if(CHROME_5_LOCAL && !$('body').attr('pluginDetected')) {
+                    window.location = 'resources/chrome/chrome.html';
+                }
+            });
+
+            $(document).ready(function() {
+                $axure.page.bind('load.start', mainFrame_onload);
+                $axure.messageCenter.addMessageListener(messageCenter_message);
+
+                $(document).on('pluginShown', function (event, data) {
+                    setVarInCurrentUrlHash('g', data ? data : '');
+                });
+
+                $(document).on('pluginCreated', function(event, data) {
+                    if($axure.player.settings.startPluginGid == data) {
+                        $axure.player.showPlugin(data);
+                    }
+                });
+
+                if($axure.player.settings.loadFeedbackPlugin) {
+                    if($axure.player.settings.isAxshare) {
+                        $axure.utils.loadJS('/Scripts/plugins/feedback/feedback8.js');
+                    } else {
+                        $axure.utils.loadJS('http://share.axure.com/Scripts/plugins/feedback/feedback8.js');
+                    }
+                }
+
+                if(navigator.userAgent.indexOf("MSIE") >= 0) $('#outerContainer').width('100%');
+                initialize();
+                if($axure.player.settings.startCollapsed) $('#outerContainer').splitter({ sizeLeft: 0 });
+                else $('#outerContainer').splitter({ sizeLeft: lastLeftPanelWidth });
+                $('#leftPanel').width(lastLeftPanelWidth);
+                
+                $(window).resize(function() { resizeContent(); });
+
+                $('#maximizePanelContainer').hide();
+
+                initializeLogo();
+
+                $(window).resize();
+                resizeContent();
+                
+                $axure.player.collapseToBar();
+
+                if($axure.player.settings.startCollapsed) {
+                    collapse();
+                    $('#leftPanel').width(0);
+                }
+
+                if(MOBILE_DEVICE) {
+                    $('#interfaceControlFrameMinimizeContainer').height('45px');
+                    $('#interfaceControlFrameMinimizeContainer a').height('45px');
+                    $('#interfaceControlFrameHeaderContainer').css('margin-top','45px');
+                    $('#interfaceControlFrameCloseContainer a').css('padding','10px 0px');
+                    $('#maximizePanelContainer').height('45px');//.css('top','inherit').css('bottom','0px');
+
+                    $('body').removeClass('hashover');
+
+                    if(IOS) {
+                        $('#rightPanel').css('overflow', 'auto').css('-webkit-overflow-scrolling', 'touch').css('-ms-overflow-x', 'hidden');
+
+                        window.addEventListener("orientationchange", function() {
+                            var viewport = document.querySelector("meta[name=viewport]");
+                            //so iOS doesn't zoom when switching back to portrait
+                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0');
+                            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+                            resizeContent();
+                        }, false);
+
+                        $axure.page.bind('load.start', function() {
+                            resizeContent();
+                        });
+                    }
+                }
+
+            });
+
+            function initialize() {
+                var legacyQString = getQueryString("Page");
+                if (legacyQString.length > 0) {
+                    location.href = location.href.substring(0, location.href.indexOf("?")) + "#p=" + legacyQString;
+                    return;
+                }
+
+                var mainFrame = document.getElementById("mainFrame");
+                mainFrame.contentWindow.location.href = getInitialUrl();
+            }
+
+            function initializeLogo() {
+                if($axure.document.configuration.logoImagePath) {
+                    var image = new Image();
+                    image.onload = function() {
+                        $('#logoImage').css('max-width', this.width + 'px');
+                        $axure.player.resizeContent();
+                    };
+                    image.src = $axure.document.configuration.logoImagePath;
+                
+                    $('#interfaceControlFrameLogoImageContainer').html('<img id="logoImage" src="" />');
+                    $('#logoImage').attr('src', $axure.document.configuration.logoImagePath).load(function() { resizeContent(); });
+                } else $('#interfaceControlFrameLogoImageContainer').hide();
+
+                if ($axure.document.configuration.logoImageCaption) {
+                    $('#interfaceControlFrameLogoCaptionContainer').html($axure.document.configuration.logoImageCaption);
+                } else $('#interfaceControlFrameLogoCaptionContainer').hide();
+
+                if(!$('#interfaceControlFrameLogoImageContainer').is(':visible') && !$('#interfaceControlFrameLogoCaptionContainer').is(':visible')) {
+                    $('#interfaceControlFrameLogoContainer').hide();
+                }
+            }
+
+            var resizeContent = $axure.player.resizeContent = function() {
+                var newHeight = $(window).height();
+                var newWidth = $(window).width();
+
+                var controlContainerHeight = newHeight;// - 30;
+                if($('#interfaceControlFrameLogoContainer').is(':visible')) controlContainerHeight -= $('#interfaceControlFrameLogoContainer').outerHeight();// + 16;
+
+                $('#outerContainer').height(newHeight).width(newWidth);
+                $('.vsplitbar').height(newHeight);
+                $('#leftPanel').height(newHeight);
+                $('#interfaceControlFrame').height(newHeight);
+                $('#interfaceControlFrameContainer').height(newHeight);
+                $('#interfaceControlFrameHostContainer').height(controlContainerHeight);
+
+                $('#rightPanel').height(newHeight);
+                $('#mainFrame').height(newHeight);
+
+                if($('#leftPanel').is(':visible')) $('#rightPanel').width($(window).width() - $('#leftPanel').width() - 1);// $('.vsplitbar').width());
+                else $('#rightPanel').width($(window).width());
+
+                $(document).trigger('ContainerHeightChange',[controlContainerHeight]);
+
+                if(MOBILE_DEVICE) {
+                    if(!(getHashStringVar(ADAPTIVE_VIEW_VAR_NAME).length > 0)) $axure.messageCenter.postMessage('setAdaptiveViewForSize', {'width':newWidth, 'height':$('#rightPanel').height()});
+                }
+            }
+
+            var collapseToBar = $axure.player.collapseToBar = function() {
+                lastLeftPanelWidth = $('#leftPanel').width();
+                $('#leftPanel').width('55px');
+                $('.vsplitbar').hide();
+                $('#rightPanel').width($(window).width() - $('#leftPanel').width());
+                $(window).resize();
+                $('#outerContainer').trigger('resize');
+                toolBarOnly = true;
+            }
+
+            var expandFromBar = $axure.player.expandFromBar = function() {
+                if($('.vsplitbar').is(':visible')) return;
+
+                $('#leftPanel').width(lastLeftPanelWidth);
+                $('.vsplitbar').show();
+                $('#rightPanel').width($(window).width() - $('#leftPanel').width() - 1);// $('.vsplitbar').width());
+                $(window).resize();
+                $('#outerContainer').trigger('resize');
+                toolBarOnly = false;
+            }
+
+        })();
+
+        function messageCenter_message(message, data) {
+            if(message == 'expandFrame') expand();
+            else if(message == 'getCollapseFrameOnLoad' && $axure.player.settings.startCollapsed && !MOBILE_DEVICE) $axure.messageCenter.postMessage('collapseFrameOnLoad');
+        }
+
+        
+        function getInitialUrl() {
+            var pageName = getHashStringVar("p");
+            if(pageName.length > 0) return pageName + ".html";
+            else {
+                var url = getFirstPageUrl($axure.document.sitemap.rootNodes);
+                return (url ? url : "about:blank");
+            }
+        }
+
+        function getFirstPageUrl(nodes) {
+            for (var i = 0; i < nodes.length; i++) {
+                var node = nodes[i];
+                if (node.url) return node.url;
+                else {
+                    var hasChildren = (node.children && node.children.length > 0);
+                    if (hasChildren) {
+                        var url = getFirstPageUrl(node.children);
+                        if (url) return url;
+                    }
+                }
+            }
+            return null;
+        }
+
+        function closePlayer() {
+            if($axure.page.location) window.location.href = $axure.page.location;
+            else {
+                var pageFile = getInitialUrl();
+                var currentLocation = window.location.toString();
+                window.location.href = currentLocation.substr(0, currentLocation.lastIndexOf("/") + 1) + pageFile;
+            }
+        }
+
+        function replaceHash(newHash) {
+            var currentLocWithoutHash = window.location.toString().split('#')[0];
+
+            //We use replace so that every hash change doesn't get appended to the history stack.
+            //We use replaceState in browsers that support it, else replace the location
+            if(typeof window.history.replaceState != 'undefined') {
+                try {
+                    //Chrome 45 (Version 45.0.2454.85 m) started throwing an error here when generated locally (this only happens with sitemap open) which broke all interactions.
+                    //try catch breaks the url adjusting nicely when the sitemap is open, but all interactions and forward and back buttons work.
+                    //Uncaught SecurityError: Failed to execute 'replaceState' on 'History': A history state object with URL 'file:///C:/Users/Ian/Documents/Axure/HTML/Untitled/start.html#p=home' cannot be created in a document with origin 'null'.
+                    window.history.replaceState(null, null, currentLocWithoutHash + newHash);
+                } catch(ex) {}
+            } else {
+                window.location.replace(currentLocWithoutHash + newHash);
+            }
+        }
+
+        function collapse() {
+            setVarInCurrentUrlHash('c', 1);
+            if(!toolBarOnly) lastLeftPanelWidth = $('#leftPanel').width();
+
+            $('#maximizePanelContainer').show();
+            $('#leftPanel').hide();
+            $('.vsplitbar').hide();
+            $('#rightPanel').width($(window).width());
+            $(window).resize();
+            $('#outerContainer').trigger('resize');
+
+            $(document).trigger('sidebarCollapse');
+
+            if(MOBILE_DEVICE) {
+                $('#maximizePanelContainer').animate({
+                    top:$('#rightPanel').height() - $('#maximizePanelContainer').height()
+                }, 300, 'swing', function() {
+                    $('#maximizePanelContainer').css('top', 'inherit').css('bottom', '0px');
+                });
+            }
+        }
+
+        function expand() {
+            if(MOBILE_DEVICE) {
+                $('#maximizePanelContainer').css('top', '0px').css('bottom', 'inherit');
+            }
+
+            deleteVarFromCurrentUrlHash('c');
+            $('#maximizePanelContainer').hide();
+            $('#leftPanel').width(lastLeftPanelWidth);
+            $('#leftPanel').show();
+            if(!toolBarOnly) {
+                $('.vsplitbar').show();
+                $('#rightPanel').width($(window).width() - $('#leftPanel').width() - 1);
+            } else {
+                $axure.player.collapseToBar();
+            }
+            $(window).resize();
+            $('#outerContainer').trigger('resize');
+
+            $(document).trigger('sidebarExpanded');
+        }
+
+
+        function mainFrame_onload() {
+            if($axure.page.pageName) document.title = $axure.page.pageName;
+        }
+
+        function getQueryString(query) {
+            var qstring = self.location.href.split("?");
+            if(qstring.length < 2) return "";
+            return GetParameter(qstring, query);
+        }
+        
+        function GetParameter(qstring, query) {
+            var prms = qstring[1].split("&");
+            var frmelements = new Array();
+            var currprmeter, querystr = "";
+
+            for(var i = 0; i < prms.length; i++) {
+                currprmeter = prms[i].split("=");
+                frmelements[i] = new Array();
+                frmelements[i][0] = currprmeter[0];
+                frmelements[i][1] = currprmeter[1];
+            }
+
+            for(j = 0; j < frmelements.length; j++) {
+                if(frmelements[j][0].toLowerCase() == query.toLowerCase()) {
+                    querystr = frmelements[j][1];
+                    break;
+                }
+            }
+            return querystr;
+        }
+        
+        function getHashStringVar(query) {
+            var qstring = self.location.href.split("#");
+            if(qstring.length < 2) return "";
+            return GetParameter(qstring, query);
+        }
+
+        function setHashStringVar(currentHash, varName, varVal) {
+            var varWithEqual = varName + '=';
+            var poundVarWithEqual = varVal === '' ? '' :  '#' + varName + '=' + varVal;
+            var ampVarWithEqual = varVal === '' ? '' :  '&' + varName + '=' + varVal;
+            var hashToSet = '';
+
+            var pageIndex = currentHash.indexOf('#' + varWithEqual);
+            if(pageIndex == -1) pageIndex = currentHash.indexOf('&' + varWithEqual);
+            if(pageIndex != -1) {
+                var newHash = currentHash.substring(0, pageIndex);
+
+                newHash = newHash == '' ? poundVarWithEqual : newHash + ampVarWithEqual;
+
+                var ampIndex = currentHash.indexOf('&', pageIndex + 1);
+                if(ampIndex != -1) {
+                    newHash = newHash == '' ? '#' + currentHash.substring(ampIndex + 1) : newHash + currentHash.substring(ampIndex);
+                }
+                hashToSet = newHash;
+            } else if(currentHash.indexOf('#') != -1) {
+                hashToSet = currentHash + ampVarWithEqual;
+            } else {
+                hashToSet = poundVarWithEqual;
+            }
+
+            if(hashToSet != '' || varVal == '') {
+                return hashToSet;
+            }
+
+            return null;
+        }
+
+        function setVarInCurrentUrlHash(varName, varVal) {
+            var newHash = setHashStringVar(window.location.hash, varName, varVal);
+
+            if(newHash != null) {
+                replaceHash(newHash);
+            }
+        }
+
+        function deleteHashStringVar(currentHash, varName) {
+            var varWithEqual = varName + '=';
+
+            var pageIndex = currentHash.indexOf('#' + varWithEqual);
+            if(pageIndex == -1) pageIndex = currentHash.indexOf('&' + varWithEqual);
+            if(pageIndex != -1) {
+                var newHash = currentHash.substring(0, pageIndex);
+
+                var ampIndex = currentHash.indexOf('&', pageIndex + 1);
+
+                //IF begin of string....if none blank, ELSE # instead of & and rest
+                //IF in string....prefix + if none blank, ELSE &-rest
+                if(newHash == '') { //beginning of string
+                    newHash = ampIndex != -1 ? '#' + currentHash.substring(ampIndex + 1) : '';
+                } else { //somewhere in the middle
+                    newHash = newHash + (ampIndex != -1 ? currentHash.substring(ampIndex) : '');
+                }
+
+                return newHash;
+            }
+
+            return null;
+        }
+
+        function deleteVarFromCurrentUrlHash(varName) {
+            var newHash = deleteHashStringVar(window.location.hash, varName);
+
+            if(newHash != null) {
+                replaceHash(newHash);
+            }
+        }
+    --></script>
+
+    <link type="text/css" rel="Stylesheet" href="plugins/sitemap/styles/sitemap.css" />
+    <script type="text/javascript" src="plugins/sitemap/sitemap.js"></script>
+    <link type="text/css" rel="Stylesheet" href="plugins/page_notes/styles/page_notes.css" />
+    <script type="text/javascript" src="plugins/page_notes/page_notes.js"></script>
+    <!--<link type="text/css" rel="Stylesheet" href="plugins/recordplay/styles/recordplay.css" />
+    <script type="text/javascript" src="plugins/recordplay/recordplay.js"></script>-->
+    <link type="text/css" rel="Stylesheet" href="plugins/debug/styles/debug.css" />
+    <script type="text/javascript" src="plugins/debug/debug.js"></script>
+
+</head>
+<body scroll="no" class="hashover">
+    <div id="outerContainer">
+
+        <div id="leftPanel">
+            <div id="interfaceControlFrame">
+                <div id="interfaceControlFrameMinimizeContainer">
+                    <a title="Collapse" id="interfaceControlFrameMinimizeButton" onclick="collapse();">&nbsp;</a>
+                </div>
+                <div id="interfaceControlFrameHeaderContainer">
+                    <ul id="interfaceControlFrameHeader"></ul>
+                </div>
+                <div id="interfaceControlFrameContainer">
+                    <div id="interfaceControlFrameLogoContainer">
+                        <div id="interfaceControlFrameLogoImageContainer"></div>
+                        <div id="interfaceControlFrameLogoCaptionContainer"></div>
+                    </div>
+                    <div id="interfaceControlFrameHostContainer">
+                    </div>
+                </div>
+                <div id="interfaceControlFrameCloseContainer">
+                    <a title="Close" id="interfaceControlFrameCloseButton" onclick="closePlayer();">CLOSE</a>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Two (Rectangle) -->
-      <div id="u1872" class="ax_default box_1" data-label="Two" selectiongroup="u1868MovingSlide">
-        <div id="u1872_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1873" class="text" style="display: none; visibility: hidden">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- Three (Rectangle) -->
-      <div id="u1874" class="ax_default box_1" data-label="Three" selectiongroup="u1868MovingSlide">
-        <div id="u1874_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1875" class="text" style="display: none; visibility: hidden">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- four (Rectangle) -->
-      <div id="u1876" class="ax_default box_1" data-label="four" selectiongroup="u1868MovingSlide">
-        <div id="u1876_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1877" class="text" style="display: none; visibility: hidden">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- five (Rectangle) -->
-      <div id="u1878" class="ax_default box_1" data-label="five" selectiongroup="u1868MovingSlide">
-        <div id="u1878_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1879" class="text" style="display: none; visibility: hidden">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- six (Rectangle) -->
-      <div id="u1880" class="ax_default box_1" data-label="six" selectiongroup="u1868MovingSlide">
-        <div id="u1880_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1881" class="text" style="display: none; visibility: hidden">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Rectangle) -->
-      <div id="u1882" class="ax_default heading_1">
-        <div id="u1882_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1883" class="text" style="visibility: visible;">
-          <p><span>My Resume</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Group) -->
-      <div id="u1884" class="ax_default">
-
-        <!-- Right1 (Rectangle) -->
-        <div id="u1885" class="ax_default box_1" data-label="Right1">
-          <div id="u1885_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1886" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Left1 (Rectangle) -->
-        <div id="u1887" class="ax_default box_1" data-label="Left1">
-          <div id="u1887_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1888" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Right2 (Rectangle) -->
-        <div id="u1889" class="ax_default box_1" data-label="Right2">
-          <div id="u1889_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1890" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Left2 (Rectangle) -->
-        <div id="u1891" class="ax_default box_1" data-label="Left2">
-          <div id="u1891_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1892" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Left3 (Shape) -->
-        <div id="u1893" class="ax_default box_1" data-label="Left3">
-          <img id="u1893_img" class="img " src="images/home/left3_u10.png"/>
-          <!-- Unnamed () -->
-          <div id="u1894" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Right3 (Shape) -->
-        <div id="u1895" class="ax_default box_1" data-label="Right3">
-          <img id="u1895_img" class="img " src="images/home/left3_u10.png"/>
-          <!-- Unnamed () -->
-          <div id="u1896" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Right4 (Rectangle) -->
-        <div id="u1897" class="ax_default box_1" data-label="Right4">
-          <div id="u1897_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1898" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Left4 (Rectangle) -->
-        <div id="u1899" class="ax_default box_1" data-label="Left4">
-          <div id="u1899_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1900" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Right5 (Rectangle) -->
-        <div id="u1901" class="ax_default box_1" data-label="Right5">
-          <div id="u1901_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1902" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Left5 (Rectangle) -->
-        <div id="u1903" class="ax_default box_1" data-label="Left5">
-          <div id="u1903_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1904" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Left3 (Shape) -->
-        <div id="u1905" class="ax_default box_1" data-label="Left3">
-          <img id="u1905_img" class="img " src="images/home/left3_u10.png"/>
-          <!-- Unnamed () -->
-          <div id="u1906" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Right3 (Shape) -->
-        <div id="u1907" class="ax_default box_1" data-label="Right3">
-          <img id="u1907_img" class="img " src="images/home/left3_u10.png"/>
-          <!-- Unnamed () -->
-          <div id="u1908" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Right4 (Rectangle) -->
-        <div id="u1909" class="ax_default box_1" data-label="Right4">
-          <div id="u1909_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1910" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Left4 (Rectangle) -->
-        <div id="u1911" class="ax_default box_1" data-label="Left4">
-          <div id="u1911_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1912" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- si (Group) -->
-      <div id="u1913" class="ax_default ax_default_hidden" data-label="si" style="display: none; visibility: hidden">
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1914" class="ax_default box_1">
-          <div id="u1914_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1915" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1916" class="ax_default box_1">
-          <div id="u1916_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1917" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1918" class="ax_default box_1">
-          <div id="u1918_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1919" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1920" class="ax_default box_1">
-          <div id="u1920_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1921" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1922" class="ax_default box_1">
-          <div id="u1922_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1923" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1924" class="ax_default box_1">
-          <div id="u1924_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1925" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Shape) -->
-        <div id="u1926" class="ax_default box_1">
-          <img id="u1926_img" class="img " src="images/page_1__1_/u994.png"/>
-          <!-- Unnamed () -->
-          <div id="u1927" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Shape) -->
-        <div id="u1928" class="ax_default box_1">
-          <img id="u1928_img" class="img " src="images/page_1__1_/u994.png"/>
-          <!-- Unnamed () -->
-          <div id="u1929" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- wu (Group) -->
-      <div id="u1930" class="ax_default ax_default_hidden" data-label="wu" style="display: none; visibility: hidden">
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1931" class="ax_default box_1">
-          <div id="u1931_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1932" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1933" class="ax_default box_1">
-          <div id="u1933_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1934" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1935" class="ax_default box_1">
-          <div id="u1935_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1936" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1937" class="ax_default box_1">
-          <div id="u1937_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1938" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1939" class="ax_default box_1">
-          <div id="u1939_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1940" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- er (Group) -->
-      <div id="u1941" class="ax_default ax_default_hidden" data-label="er" style="display: none; visibility: hidden">
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1942" class="ax_default box_1">
-          <div id="u1942_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1943" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1944" class="ax_default box_1">
-          <div id="u1944_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1945" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- san (Group) -->
-      <div id="u1946" class="ax_default ax_default_hidden" data-label="san" style="display: none; visibility: hidden">
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1947" class="ax_default box_1">
-          <div id="u1947_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1948" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1949" class="ax_default box_1">
-          <div id="u1949_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1950" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1951" class="ax_default box_1">
-          <div id="u1951_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1952" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- yi (Rectangle) -->
-      <div id="u1953" class="ax_default box_1 ax_default_hidden" data-label="yi" style="display: none; visibility: hidden">
-        <div id="u1953_div" class=""></div>
-        <!-- Unnamed () -->
-        <div id="u1954" class="text" style="display: none; visibility: hidden">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- liu (Group) -->
-      <div id="u1955" class="ax_default ax_default_hidden" data-label="liu" style="display: none; visibility: hidden">
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1956" class="ax_default box_1">
-          <div id="u1956_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1957" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1958" class="ax_default box_1">
-          <div id="u1958_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1959" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1960" class="ax_default box_1">
-          <div id="u1960_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1961" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1962" class="ax_default box_1">
-          <div id="u1962_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1963" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ling (Group) -->
-      <div id="u1964" class="ax_default ax_default_hidden" data-label="ling" style="display: none; visibility: hidden">
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1965" class="ax_default box_1">
-          <div id="u1965_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1966" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1967" class="ax_default box_1">
-          <div id="u1967_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1968" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1969" class="ax_default box_1">
-          <div id="u1969_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1970" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1971" class="ax_default box_1">
-          <div id="u1971_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1972" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1973" class="ax_default box_1">
-          <div id="u1973_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1974" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1975" class="ax_default box_1">
-          <div id="u1975_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1976" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
+        <div id="rightPanel">
+            <iframe id="mainFrame" name="mainFrame" width="100%" height="100%" src="" frameborder="0" style="display: block;"></iframe>
         </div>
 
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1977" class="ax_default box_1">
-          <div id="u1977_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1978" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1979" class="ax_default box_1">
-          <div id="u1979_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1980" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1981" class="ax_default box_1">
-          <div id="u1981_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1982" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1983" class="ax_default box_1">
-          <div id="u1983_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1984" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Shape) -->
-        <div id="u1985" class="ax_default box_1">
-          <img id="u1985_img" class="img " src="images/index/u1985.png"/>
-          <!-- Unnamed () -->
-          <div id="u1986" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1987" class="ax_default box_1">
-          <div id="u1987_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1988" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1989" class="ax_default box_1">
-          <div id="u1989_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1990" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Shape) -->
-        <div id="u1991" class="ax_default box_1">
-          <img id="u1991_img" class="img " src="images/index/u1985.png"/>
-          <!-- Unnamed () -->
-          <div id="u1992" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Rectangle) -->
-        <div id="u1993" class="ax_default box_1">
-          <div id="u1993_div" class=""></div>
-          <!-- Unnamed () -->
-          <div id="u1994" class="text" style="display: none; visibility: hidden">
-            <p><span></span></p>
-          </div>
-        </div>
-      </div>
     </div>
-  </body>
+
+    <div id="maximizePanelContainer">
+        <iframe id="expandFrame" src="resources/expand.html" width="100%" height="100%" scrolling="no" allowtransparency="true" frameborder="0"></iframe>
+    </div>
+
+</body>
 </html>

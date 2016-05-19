@@ -9,9 +9,10 @@
 }
 .box_1 {
 }
-.ellipse {
+.image {
 }
-.shape {
+.primary_button {
+  color:#FFFFFF;
 }
 .heading_1 {
   font-family:'Arial Regular', 'Arial';
@@ -52,15 +53,23 @@
   font-size:14px;
   text-align:left;
 }
+.label2 {
+  font-family:'Arial Regular', 'Arial';
+  font-weight:bold;
+  font-size:15px;
+  color:#FFFFFF;
+  text-align:left;
+}
 .paragraph {
   text-align:left;
 }
 .line {
 }
-.arrow {
-}
-.paragraph1 {
+.text_field {
+  color:#000000;
   text-align:left;
 }
-.shape1 {
+.text_area {
+  color:#000000;
+  text-align:left;
 }
